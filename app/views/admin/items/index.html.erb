@@ -1,0 +1,31 @@
+<h1>商品一覧</h1>
+<%= link_to new_admin_item_path do %>
+	<i class="fas fa-plus-circle"></i>
+<% end %>
+
+<table class="table table-borderless">
+	<thead class="thead-light">
+		<tr>
+			<th scope="col1">商品ID</th>
+			<th scope="col1">商品名</th>
+			<th scope="col1">税抜価格</th>
+			<th scope="col1">ジャンル</th>
+			<th scope="col1">ステータス</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<%= @items.each do |item| %>
+		<tr>
+			<td><%= item.id %></td>
+			<td><%= item.name %></td>
+			<td><%= item.price %></td>
+			<tdd></tdd>
+			<td></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+	
