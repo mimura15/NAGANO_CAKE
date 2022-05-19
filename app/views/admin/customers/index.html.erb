@@ -1,0 +1,29 @@
+<h1>会員一覧</h1>
+
+<table class="table table-borderless">
+	<thead class="thead-light">
+		<tr>
+			<th>会員ID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<% @customers.each do |customer| %>
+		<tr>
+			<th><%= customer.id %></th>
+			<th><%= customer.last_name %><%= customer.first_name %></th>
+			<th><%= customer.email %></th>
+			<th>
+				<%= if customer.is_active %>
+					退会
+				<% else %>
+					有効
+				<% end %>
+			</th>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
