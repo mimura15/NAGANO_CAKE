@@ -14,10 +14,14 @@
 		<% @customers.each do |customer| %>
 		<tr>
 			<th><%= customer.id %></th>
-			<th><%= customer.last_name %><%= customer.first_name %></th>
+			<th>
+				<%= link_to admin_customer_path(customer.id) do %>
+					<%= customer.last_name %><%= customer.first_name %>
+				<% end %>
+			</th>
 			<th><%= customer.email %></th>
 			<th>
-				<%= if customer.is_active %>
+				<% if customer.is_active %>
 					退会
 				<% else %>
 					有効
@@ -27,3 +31,5 @@
 		<% end %>
 	</tbody>
 </table>
+
+<%= paginate @customers %>
