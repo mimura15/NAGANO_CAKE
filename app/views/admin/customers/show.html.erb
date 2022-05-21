@@ -22,7 +22,7 @@
 <%= @customer.email %>
 
 <h4>会員ステータス</h4>
-<% if is_active %>
+<% if @customer.is_active %>
 	退会
 <% else %>
 	有効
