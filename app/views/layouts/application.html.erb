@@ -11,6 +11,36 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3"><%= image_tag('Logoマーク.png') %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavdropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <button type="button" class="btn btn-outline-warning">About</button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-outline-warning">商品一覧</button>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_customer_registration_path do %>
+                  <button type="button" class="btn btn-outline-warning">新規登録</button>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_customer_session_path do %>
+                  <button type="button" class="btn btn-outline-warning">ログイン</button>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
