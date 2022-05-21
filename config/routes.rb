@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   namespace :admin do
-    get '/' => 'admin/homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
   end
-  
+ 
+ get '/admin' => 'admin/homes#top'
+ 
 end
