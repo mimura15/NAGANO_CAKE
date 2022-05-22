@@ -17,7 +17,17 @@ Rails.application.routes.draw do
   end
  
  get '/admin' => 'admin/homes#top'
+ 
  root to: 'public/homes#top'
  get '/about' => 'public/homes#about'
  
+ scope module: :public do
+   resources :customers, only: [:show, :edit, :update] do
+     collection do
+      get :unsubscribe
+      patch :withdraw
+     end
+    end
+  end
+  
 end
