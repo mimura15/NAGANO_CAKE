@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   end
  
  get '/admin' => 'admin/homes#top'
+ root to: 'public/homes#top'
+ get '/about' => 'public/homes#about'
  
 end
