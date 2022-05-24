@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       patch :withdraw
      end
     end
+    resources :addresses, except: [:new, :show]
   end
   
 end
