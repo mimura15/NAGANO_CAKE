@@ -1,6 +1,9 @@
 <h1>マイページ</h1>
 
 <h2>登録情報</h2>
+<%= link_to edit_customer_path(@customer) do %>
+    <button type="button" class="btn btn-success">編集する</button>
+<% end %>
 
 
 <h4>氏名</h4>
