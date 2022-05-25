@@ -19,24 +19,69 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <%= link_to about_path do %>
-                  <button type="button" class="btn btn-outline-warning">About</button>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <button type="button" class="btn btn-outline-warning">商品一覧</button>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_customer_registration_path do %>
-                  <button type="button" class="btn btn-outline-warning">新規登録</button>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_customer_session_path do %>
-                  <button type="button" class="btn btn-outline-warning">ログイン</button>
-                <% end %>
-              </li>
+              <% if customer_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to customers_my_page_path do %>
+                   <button type="button" class="btn btn-outline-warning">マイページ</button>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-outline-warning">商品一覧</button>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-outline-warning">カート</button>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_customer_session_path, method: :delete do %>
+                    <button type="button" class="btn btn-outline-warning">ログアウト</button>
+                  <% end %>
+                </li>
+              <% elsif  admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to admin_items_path do %>
+                    <button type="button" class="btn btn-outline-warning">商品一覧</button>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_customers_path do %>
+                    <button type="button" class="btn btn-outline-warning">会員一覧</button>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_path do %>
+                    <button type="button" class="btn btn-outline-warning">注文履歴一覧</button>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_genres_path do %>
+                    <button type="button" class="btn btn-outline-warning">ジャンル一覧</button>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, method: :delete do %>
+                    <button type="button" class="btn btn-outline-warning">ログアウト</button>
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to about_path do %>
+                    <button type="button" class="btn btn-outline-warning">About</button>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-outline-warning">商品一覧</button>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_customer_registration_path do %>
+                    <button type="button" class="btn btn-outline-warning">新規登録</button>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_customer_session_path do %>
+                    <button type="button" class="btn btn-outline-warning">ログイン</button>
+                  <% end %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
