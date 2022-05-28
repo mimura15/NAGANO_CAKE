@@ -25,5 +25,8 @@
 <%= @customer.email %>
 
 <h2>配送先</h2>
+<%= link_to addresses_path do %>
+	<button type="button" class="btn btn-primary">一覧を見る</button>
+<% end %>
 
 <h2>注文履歴</h2>

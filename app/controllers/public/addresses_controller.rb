@@ -9,11 +9,11 @@ class Public::AddressesController < ApplicationController
 	end
 	
 	def create
-		address = Address.new(address_params)
-		if address.save
+		@address = Address.new(address_params)
+		if @address.save
 			redirect_to addresses_path
 		else
-			@addresses = Addresses.all
+			@addresses = Address.all
 			render :index
 		end
 	end
@@ -23,7 +23,9 @@ class Public::AddressesController < ApplicationController
 	end
 	
 	def destroy
-		
+		address = Address.find(params[:id])
+		address.destroy
+		redirect_to :index
 	end
 	
 	private
