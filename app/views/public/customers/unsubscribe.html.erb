@@ -10,6 +10,6 @@
 	<button type="button" class="btn btn-primary">退会しない</button>
 <% end %>
 
-<%= link_to withdraw_customers_path, method: :patch, data: { confilm: "本当に退会しますか？" } do %>
+<%= link_to withdraw_customers_path, method: :patch do %>
 	<button type="button" class="btn btn-danger">退会する</button>
 <% end %>
