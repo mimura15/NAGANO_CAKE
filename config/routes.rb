@@ -30,6 +30,7 @@ Rails.application.routes.draw do
      end
     end
     resources :addresses, except: [:new, :show]
+    resources :items, only: [:index, :show]
   end
   
 end
