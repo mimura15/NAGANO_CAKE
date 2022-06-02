@@ -2,7 +2,9 @@
 
 <% @items.each do |item| %>
 
-	<%= image_tag item.image, size: "200x200" %>
+	<%= link_to item_path(item.id) do %>
+		<%= image_tag item.image, size: "200x200" %>
+	<% end %>
 	<%= item.name %>
 	￥<%= item.price %>
 	
