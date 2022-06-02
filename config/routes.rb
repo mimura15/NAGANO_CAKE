@@ -31,6 +31,11 @@ Rails.application.routes.draw do
     end
     resources :addresses, except: [:new, :show]
     resources :items, only: [:index, :show]
+    resources :cart_items, except: [:new, :show, :edit] do
+      collection do
+        delete :destroy_all
+      end
+    end
   end
   
 end
