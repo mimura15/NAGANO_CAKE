@@ -7,7 +7,9 @@
 
 <h2>新着商品</h2>
 <% @items.each do |item| %>
-	<%= image_tag item.image, size: "100x100" %>
+	<%= link_to item_path(item.id) do %>
+		<%= image_tag item.image, size: "100x100" %>
+	<% end %>
 	<%= item.name %>
 	<%= item.price %>
 <% end %>
