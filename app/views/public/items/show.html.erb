@@ -6,8 +6,8 @@
 
 ￥<%= @item.price %>(税込)
 
-<%= form_with model: Cart_item.new do |f| %>
-    <%= f.hidden_field :cart_item.item_id, :value => @item.id %>
-    <%= f.select :amount, *[1.10] %>
+<%= form_with model: @cart_item do |f| %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.select :amount, *[1..10] %>
     <%= f.submit 'カートに入れる' %>
 <% end %>
