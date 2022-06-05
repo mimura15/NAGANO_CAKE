@@ -1,10 +1,7 @@
 <h1>マイページ</h1>
 
 <h2>登録情報</h2>
-<%= link_to edit_customer_path(@customer) do %>
-    <button type="button" class="btn btn-success">編集する</button>
-<% end %>
-
+<%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success" %>
 
 <h4>氏名</h4>
 <%= @customer.last_name %> <%= @customer.first_name %>
@@ -25,9 +22,7 @@
 <%= @customer.email %>
 
 <h2>配送先</h2>
-<%= link_to addresses_path do %>
-	<button type="button" class="btn btn-primary">一覧を見る</button>
-<% end %>
+<%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
 
 <h2>注文履歴</h2>
 	

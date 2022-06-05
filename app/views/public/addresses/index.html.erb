@@ -10,7 +10,7 @@
 	<h4>宛名</h4>
 	<%= f.text_field :name %>
 	
-	<%= f.submit '新規登録' %>
+	<%= f.submit '新規登録', class: "btn btn-success" %>
 <% end %>
 
 <table class="table table-bordered">
@@ -29,12 +29,8 @@
 			<th><%= address.address %></th>
 			<th><%= address.name %></th>
 			<th>
-				<%= link_to edit_address_path(address.id) do %>
-					<button type="button" class="btn btn-success">編集する</button>
-				<% end %>
-				<%= link_to address_path(address.id), method: :delete do %>
-					<button type="button" class="btn btn-danger">削除する</button>
-				<% end %>
+				<%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
+				<%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger" %>
 			</th>
 		</tr>
 		<% end %>
