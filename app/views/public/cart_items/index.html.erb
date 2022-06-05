@@ -13,6 +13,18 @@
 		</tr>
 	</thead>
 	<tbody>
-		
+		<% @cart_items.each do |cart_item| %>
+		<tr>
+			<th><%= cart_item.item.name %></th>
+			<th><%= cart_item.item.with_tax_price %></th>
+			<th><%= cart_item.amount %></th>
+			<th><%= cart_item.subtotal %></th>
+			<th><button type="button" class="btn btn-danger">削除する</button></th>
+		</tr>
+		<% end %>
 	</tbody>
 </table>
+
+<%= link_to root_path do %>
+	<button type="button" class="btn btn-primary">買い物を続ける</button>
+<% end 

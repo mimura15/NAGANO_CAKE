@@ -36,6 +36,12 @@ Rails.application.routes.draw do
         delete :destroy_all
       end
     end
+    resources :orders, except: [:edit, :update, :destroy] do
+      collection do
+        post :confirm
+        get :complete
+      end
+    end
   end
   
 end
