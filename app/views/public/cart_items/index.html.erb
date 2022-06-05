@@ -19,7 +19,11 @@
 			<th><%= cart_item.item.with_tax_price %></th>
 			<th><%= cart_item.amount %></th>
 			<th><%= cart_item.subtotal %></th>
-			<th><button type="button" class="btn btn-danger">削除する</button></th>
+			<th>
+				<%= link_to cart_item_path(cart_item.id), method: :delete do %>
+					<button type="button" class="btn btn-danger">削除する</button>
+				<% end %>
+			</th>
 		</tr>
 		<% end %>
 	</tbody>
@@ -27,4 +31,8 @@
 
 <%= link_to root_path do %>
 	<button type="button" class="btn btn-primary">買い物を続ける</button>
-<% end 
+<% end %>
+
+<%= link_to new_order_path do %>
+	<button type="button" class="btn btn-success">情報入力に進む</button>
+<% end %>
