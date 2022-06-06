@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
 	def new
-		
+		@order = Order.new
+		@customer = current_customer
 	end
 	
 	def confirm
@@ -12,7 +13,9 @@ class Public::OrdersController < ApplicationController
 	end
 	
 	def create
-		
+		order = Order.new(order_params)
+		order.save
+		redirect_to confirm_orders_
 	end
 	
 	def index
