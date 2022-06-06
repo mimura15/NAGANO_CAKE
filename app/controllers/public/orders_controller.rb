@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
 	def create
 		order = Order.new(order_params)
 		order.save
-		redirect_to confirm_orders_
+		redirect_to confirm_orders_path
 	end
 	
 	def index
