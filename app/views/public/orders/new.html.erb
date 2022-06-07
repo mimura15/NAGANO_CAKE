@@ -1,6 +1,6 @@
 <h2>注文情報入力</h2>
 
-<%= form_with model: @order, url: orders_path do |f| %>
+<%= form_with model: @order, url: confirm_orders_path do |f| %>
 
 <h4>支払方法</h4>
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
@@ -19,7 +19,7 @@
 
 <%= f.radio_button :address_select, :used_address %>
 <%= f.label :address_select, "登録済み住所から選択", {value: :used_address} %>
-<%= f.collection_select :customer_used_address, Address.all, :id, :full_address %>
+<%= f.collection_select :address_id, Address.all, :id, :address_display %>
 
 <%= f.radio_button :address_select, :new_address %>
 <%= f.label :address_select, "新しいお届け先", {value: :new_address} %>
