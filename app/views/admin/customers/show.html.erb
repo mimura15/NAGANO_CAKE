@@ -28,8 +28,6 @@
 	有効
 <% end %>
 
-<%= link_to edit_admin_customer_path(@customer.id) do %>
-	<button_type="button" class="btn btn-success">編集する</button_type>
-<% end %>
+<%= link_to '編集する', edit_admin_customer_path(@customer.id), class: 'btn btn-success' %>
 
 <button_type="button" class="btn btn-primary">注文履歴一覧を見る</button_type>
