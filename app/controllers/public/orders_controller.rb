@@ -10,9 +10,24 @@ class Public::OrdersController < ApplicationController
 		@cart_items = @customer.cart_items
 		@sum = 0
 		@address = Address.find(params[:order][:address_id])
-		@order.postal_code = @customer.postal_code
-		@order.address = @customer.address
-		@order.name = @customer.last_name + @customer.first_name
+		
+		if params[:order][:address_select] == "myaddress"
+			@order.postal_code = @customer.postal_code
+			@order.address = @customer.address
+			@order.name = @customer.last_name + @customer.first_name
+		elsif params[:order][:address_select] == "used_address"
+			@address = Address.find(params[:order][:address_id])
+			@order.postal_code = @address.postal_code
+			@order.address = @address.address
+			@order.name = @address.name
+		elsif params[:order][:address_select] == "new_address"
+			#処理なし
+		else
+			redirect_to :new
+			#エラー処理
+		end
+		
+		@order.shipping_cost = 800
 	end
 	
 	def complete
@@ -35,7 +50,7 @@ class Public::OrdersController < ApplicationController
 	private
 	
 	def order_params
-		params.require(:order).permit(:postal_code, :address, :name, :payment_method)	
+		params.require(:order).permit(:payment_method, :postal_code, :address, :name)	
 	end
 	
 end
