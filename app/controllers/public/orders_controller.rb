@@ -29,7 +29,7 @@ class Public::OrdersController < ApplicationController
 		end
 		
 		@order.shipping_cost = 800
-		@order.status = 
+		@order.status = Order.statuses.key(0)
 	end
 	
 	def complete
@@ -37,8 +37,17 @@ class Public::OrdersController < ApplicationController
 	end
 	
 	def create
-		order = Order.new(order_params)
-		order.save
+		@order = Order.new(order_params)
+		@order.save
+		cart_items = current_customer.cart_items
+		cart_items.each do |cart_item|
+			@order_details = @order.order_details.new
+			@order_details.item_id = cart_item.item_id
+			@order_details.price = cart_item.item.price
+			@order_details.amount = cart_item.amount
+			@order_details.making_status = OrderDetail.making_status.key(0)
+			@order_details.save
+		end
 	end
 	
 	def index
