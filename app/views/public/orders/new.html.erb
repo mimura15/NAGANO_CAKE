@@ -23,11 +23,11 @@
 
 <%= f.radio_button :address_select, :new_address %>
 <%= f.label :address_select, "新しいお届け先", {value: :new_address} %>
-<h5>郵便番号(ハイフンなし)</h5>
+<%= f.label :postal_code, "郵便番号(ハイフンなし7桁)" %>
 <%= f.text_field :postal_code %>
-<h5>住所</h5>
+<%= f.label :address, '住所' %>
 <%= f.text_field :address %>
-<h5>宛名</h5>
+<%= f.label :name, '宛名' %>
 <%= f.text_field :name %>
 
 <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>

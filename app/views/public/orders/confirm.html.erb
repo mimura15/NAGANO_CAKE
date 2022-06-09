@@ -58,5 +58,5 @@
 	<%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
 	<%= f.hidden_field :total_payment, :value => @sum + @order.shipping_cost %>
 	<%= f.hidden_field :payment_method, :value =>@order.payment_method %>
-	<%= f.hidden_field :status, :value => 
+	<%= f.hidden_field :status, :value => @order.status %>
  

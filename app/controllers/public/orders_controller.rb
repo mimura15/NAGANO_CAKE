@@ -20,14 +20,16 @@ class Public::OrdersController < ApplicationController
 			@order.postal_code = @address.postal_code
 			@order.address = @address.address
 			@order.name = @address.name
-		elsif params[:order][:address_select] == "new_address"
+		elsif params[:order][:address_select] == "new_address" && @order.postal_code? && @order.address? && @order.name?
+
 			#処理なし
 		else
-			redirect_to :new
+			render :new
 			#エラー処理
 		end
 		
 		@order.shipping_cost = 800
+		@order.status = 
 	end
 	
 	def complete
