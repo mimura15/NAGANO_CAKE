@@ -21,7 +21,6 @@ class Public::OrdersController < ApplicationController
 			@order.address = @address.address
 			@order.name = @address.name
 		elsif params[:order][:address_select] == "new_address" && @order.postal_code? && @order.address? && @order.name?
-
 			#処理なし
 		else
 			render :new
@@ -45,13 +44,15 @@ class Public::OrdersController < ApplicationController
 			@order_details.item_id = cart_item.item_id
 			@order_details.price = cart_item.item.price
 			@order_details.amount = cart_item.amount
-			@order_details.making_status = OrderDetail.making_status.key(0)
+			@order_details.making_status = OrderDetail.making_statuses.key(0)
 			@order_details.save
 		end
+		cart_items.destroy_all
+		redirect_to complete_orders_path
 	end
 	
 	def index
-		
+		@orders = current_customer.orders	
 	end
 	
 	def show
@@ -61,7 +62,7 @@ class Public::OrdersController < ApplicationController
 	private
 	
 	def order_params
-		params.require(:order).permit(:payment_method, :postal_code, :address, :name)	
+		params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)	
 	end
 	
 end
