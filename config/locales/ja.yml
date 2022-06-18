@@ -12,7 +12,7 @@ ja:
         ready_to_ship: "発送準備中"
         shipped: "発送済み"
     
-    order_details:
+    order_detail:
       making_status:
         not_making: "製作不可"
         preparation: "製作待ち"
