@@ -23,13 +23,13 @@
 					<%= item.name %>
 				<% end %>
 			</td>
-			<td><%= item.price %></td>
+			<td><%= item.price.to_s(:delimited) %></td>
 			<td><%= item.genre.name %></td>
 			<td>
 				<% if item.is_active %>
-					販売中
+					<p class="text-success">販売中</p>
 				<% else %>
-					販売停止中
+					<p class="text-secondary">販売停止中</p>
 				<% end %>
 			</td>
 		</tr>
