@@ -1,6 +1,6 @@
 <h1>会員一覧</h1>
 
-<table class="table table-borderless">
+<table class="table">
 	<thead class="thead-light">
 		<tr>
 			<th>会員ID</th>
@@ -16,15 +16,15 @@
 			<th><%= customer.id %></th>
 			<th>
 				<%= link_to admin_customer_path(customer.id) do %>
-					<%= customer.last_name %><%= customer.first_name %>
+					<%= customer.full_name %>
 				<% end %>
 			</th>
 			<th><%= customer.email %></th>
 			<th>
 				<% if customer.is_active %>
-					退会
+					<p class="text-secondary">退会</p>
 				<% else %>
-					有効
+					<p class="text-success">有効</p>
 				<% end %>
 			</th>
 		</tr>

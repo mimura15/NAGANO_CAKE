@@ -1,13 +1,15 @@
 <h1>注文履歴詳細</h1>
 
 <h4>購入者</h4>
-<%= @order.name %>
+<%= link_to admin_customer_path(@order.customer_id) do %>
+	<%= @order.customer.full_name %>
+<% end %>
 
 <h4>注文日</h4>
-<%= @order.created_at %>
+<%= @order.created_at.strftime("%Y/%m/%d") %>
 
 <h4>配送先</h4>
-<%= @order.postal_code %>
+〒<%= @order.postal_code %>
 <%= @order.address %>
 <%= @order.name %>
 
