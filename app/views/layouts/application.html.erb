@@ -22,77 +22,49 @@
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to customers_my_page_path do %>
-                   <button type="button" class="btn btn-outline-warning">マイページ</button>
-                  <% end %>
+                  <%= link_to "マイページ", customers_my_page_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to items_path do %>
-                    <button type="button" class="btn btn-outline-warning">商品一覧</button>
-                  <% end %>
+                  <%= link_to "商品一覧", items_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to cart_items_path do %>
-                    <button type="button" class="btn btn-outline-warning">カート</button>
-                  <% end %>
+                  <%= link_to "カート", cart_items_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to destroy_customer_session_path, method: :delete do %>
-                    <button type="button" class="btn btn-outline-warning">ログアウト</button>
-                  <% end %>
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-warning" %>
                 </li>
+                ようこそ、<%= current_customer.last_name %>さん!
               <% elsif  admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to admin_items_path do %>
-                    <button type="button" class="btn btn-outline-warning">商品一覧</button>
-                  <% end %>
+                  <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_customers_path do %>
-                    <button type="button" class="btn btn-outline-warning">会員一覧</button>
-                  <% end %>
+                  <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_path do %>
-                    <button type="button" class="btn btn-outline-warning">注文履歴一覧</button>
-                  <% end %>
+                  <%= link_to "注文履歴一覧", admin_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_genres_path do %>
-                    <button type="button" class="btn btn-outline-warning">ジャンル一覧</button>
-                  <% end %>
+                  <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to destroy_admin_session_path, method: :delete do %>
-                    <button type="button" class="btn btn-outline-warning">ログアウト</button>
-                  <% end %>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-warning" %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to about_path do %>
-                    <button type="button" class="btn btn-outline-warning">About</button>
-                  <% end %>
+                  <%= link_to "About", about_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to items_path do %>
-                    <button type="button" class="btn btn-outline-warning">商品一覧</button>
-                  <% end %>
+                  <%= link_to "商品一覧", items_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to new_customer_registration_path do %>
-                    <button type="button" class="btn btn-outline-warning">新規登録</button>
-                  <% end %>
+                  <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-warning" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to new_customer_session_path do %>
-                    <button type="button" class="btn btn-outline-warning">ログイン</button>
-                  <% end %>
+                  <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-warning" %>
                 </li>
               <% end %>
             </ul>
-            <% flash.each do |key, value| %>
-              <%= content_tag(:div, value, class: "#{key}") %>
-            <% end %>
           </div>
         </div>
       </nav>
@@ -102,5 +74,8 @@
       <%= yield %>
     </main>
     
+    <footer>
+    
+    </footer>
   </body>
 </html>
