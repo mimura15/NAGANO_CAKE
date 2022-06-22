@@ -1,4 +1,6 @@
 class Public::AddressesController < ApplicationController
+	before_action :authenticate_customer!
+	
 	def index
 		@address = Address.new
 		@customer = current_customer
@@ -16,7 +18,8 @@ class Public::AddressesController < ApplicationController
 			redirect_to addresses_path
 		else
 			#データの確認→binding.irb サーバーを落とすとき→"ps aux | grep puma""kill [左から二番目の数字]" or "kill $(cat tmp/pids/puma.pid)"
-			@addresses = Address.all
+			@customer = current_customer
+			@addresses = @customer.addresses
 			render :index
 		end
 	end
@@ -34,7 +37,7 @@ class Public::AddressesController < ApplicationController
 	def destroy
 		address = Address.find(params[:id])
 		address.destroy
-		redirect_to :index
+		redirect_to addresses_path
 	end
 	
 	private

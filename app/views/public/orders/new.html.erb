@@ -12,7 +12,7 @@
 <h4>お届け先</h4>
 <%= f.radio_button :address_select, :myaddress %>
 <%= f.label :address_select, "ご自身の住所", {value: :myaddress} %>
-<%= @customer.postal_code %>
+〒<%= @customer.postal_code %>
 <%= @customer.address %><br>
 <%= @customer.last_name %>
 <%= @customer.first_name %>
@@ -23,12 +23,12 @@
 
 <%= f.radio_button :address_select, :new_address %>
 <%= f.label :address_select, "新しいお届け先", {value: :new_address} %>
-<%= f.label :postal_code, "郵便番号(ハイフンなし7桁)" %>
-<%= f.text_field :postal_code %>
+<%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+<%= f.text_field :postal_code, :placeholder => "0000000" %>
 <%= f.label :address, '住所' %>
-<%= f.text_field :address %>
+<%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0" %>
 <%= f.label :name, '宛名' %>
-<%= f.text_field :name %>
+<%= f.text_field :name, :placeholder => "令和道子" %>
 
 <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
 <% end %>

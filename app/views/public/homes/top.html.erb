@@ -11,5 +11,7 @@
 		<%= image_tag item.image, size: "100x100" %>
 	<% end %>
 	<%= item.name %>
-	<%= item.price %>
+	￥<%= item.price.to_s(:delimited) %>
 <% end %>
+
+<%= link_to '全ての商品を見る>', items_path %>
