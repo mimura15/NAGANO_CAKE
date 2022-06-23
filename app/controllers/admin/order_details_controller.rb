@@ -6,7 +6,10 @@ class Admin::OrderDetailsController < ApplicationController
 		@order_detail.update(order_detail_params)
 		@order = @order_detail.order
 		@order_details = @order.order_details
-		if @order_details.count == @order_details.where(making_status: "making_complete").count
+		if @order_detail.making_status == "making"
+			@order_detail.order.update(status: "in_the_making")
+			redirect_to admin_order_path(@order_detail.order.id)
+		elsif @order_details.count == @order_details.where(making_status: "making_complete").count
 			@order_detail.order.update(status: "ready_to_ship")
 			redirect_to admin_order_path(@order_detail.order.id)
 		else
