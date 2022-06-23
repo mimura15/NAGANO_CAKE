@@ -1,17 +1,36 @@
-<h4>
-	ようこそ、ながのCAKEへ！<br>
-	このサイトは、ケーキ販売のECサイトになります。<br>
-	会員でない方も商品の閲覧はできますが、<br>
-	購入には会員登録が必要になります。
-</h4>
+<section class="py-5 text-center container">
+	<div class="row py-lg-5">
+		<div class="col-lg-6 col-md-8 mx-auto">
+			<p class="lead text-muted">
+				ようこそ、ながのCAKEへ！<br>
+				このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+				購入には会員登録が必要になります。
+			</p>
+		</div>
+	</div>
+</section>
 
-<h2>新着商品</h2>
-<% @items.each do |item| %>
-	<%= link_to item_path(item.id) do %>
-		<%= image_tag item.image, size: "100x100" %>
+<div class="container">
+	<h2>新着商品</h2>
+	<% @items.each do |item| %>
+	<div class="row">
+		<div class="col">
+			<div class="card shadow-sm">
+				<%= link_to item_path(item.id) do %>
+					<%= image_tag item.image, size: "100x100" %>
+				<% end %>
+			</div>
+			<div class="card-body">
+				<p class="card-text">
+					<%= item.name %>
+					￥<%= item.price.to_s(:delimited) %>
+				</p>
+			</div>
+		</div>
+	</div>
 	<% end %>
-	<%= item.name %>
-	￥<%= item.price.to_s(:delimited) %>
-<% end %>
+	<%= link_to '全ての商品を見る>', items_path %>
+</div>
 
-<%= link_to '全ての商品を見る>', items_path %>
+
