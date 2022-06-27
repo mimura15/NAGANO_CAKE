@@ -18,3 +18,14 @@ footer {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
+
+.wrapper{
+	position: relative;
+	min-height: 100vh;
+	box-sizing: border-box;
+	padding-bottom: 60px;
+}
+
+.nav-item{
+	margin-left: 5px;
+}

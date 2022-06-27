@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
       <h2>管理者ログイン</h2>
 
       <%= form_with model: @admin, url: admin_session_path do |f| %>
@@ -8,11 +8,11 @@
           <tbody>
             <tr>
               <th><%= f.label :email, "メールアドレス" %></th>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", size: 30 %></td>
             </tr>
             <tr>
               <th><%= f.label :password, "パスワード" %></th>
-              <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+              <td><%= f.password_field :password, autocomplete: "current-password", size: 30 %></td>
             </tr>
           </tbody>
         </table>
