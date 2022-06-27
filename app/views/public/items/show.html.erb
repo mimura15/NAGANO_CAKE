@@ -1,13 +1,17 @@
-<%= image_tag @item.image, size: "100x100" %>
-
-<%= @item.name %>
-
-<%= @item.introduction %>
-
-￥<%= @item.with_tax_price.to_s(:delimited) %>(税込)
-
-<%= form_with model: @cart_item do |f| %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.select :amount, *[1..10], { prompt: "個数選択" } %>
-    <%= f.submit 'カートに入れる', class: "btn btn-success" %>
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <%= image_tag @item.image, size: "200x200" %>   
+        </div>
+        <div class="col-md-8">
+            <%= @item.name %><br>
+            <%= @item.introduction %><br>
+            ￥<%= @item.with_tax_price.to_s(:delimited) %>(税込)
+            <%= form_with model: @cart_item do |f| %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <%= f.select :amount, *[1..10], { prompt: "個数選択" } %>
+                <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+            <% end %>   
+        </div>
+    </div>
+</div>

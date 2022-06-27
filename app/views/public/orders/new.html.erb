@@ -1,34 +1,49 @@
-<h2>注文情報入力</h2>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>注文情報入力</h2>
 
-<%= form_with model: @order, url: confirm_orders_path do |f| %>
+			<%= form_with model: @order, url: confirm_orders_path do |f| %>
+			
+				<h4>支払方法</h4>
+				<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+				<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
+						
+				<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+				<%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>	
+				
+				<h4>お届け先</h4>
+				<div class="address-group">
+					<%= f.radio_button :address_select, :myaddress %>
+					<%= f.label :address_select, "ご自身の住所", {value: :myaddress} %><br>
+					〒<%= @customer.postal_code %>
+					<%= @customer.address %><br>
+					<%= @customer.last_name %>
+					<%= @customer.first_name %>
+				</div>
+				<div class="address-group">
+					<%= f.radio_button :address_select, :used_address %>
+					<%= f.label :address_select, "登録済み住所から選択", {value: :used_address} %><br>
+					<%= f.collection_select :address_id, current_customer.addresses, :id, :address_display %>	
+				</div>
+				<div class="address-group">
+					<%= f.radio_button :address_select, :new_address %>
+					<%= f.label :address_select, "新しいお届け先", {value: :new_address} %><br>
+					<%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+					<%= f.text_field :postal_code, :placeholder => "0000000" %><br>
+					<%= f.label :address, '住所' %>
+					<%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0" %><br>
+					<%= f.label :name, '宛名' %>
+					<%= f.text_field :name, :placeholder => "令和道子" %>	
+				</div>
+			
+				<div class="actions">
+					<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>	
+				</div>
+			
+			<% end %>
+		</div>
+	</div>
+</div>
 
-<h4>支払方法</h4>
-<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
-		
-<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-<%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
 
-<h4>お届け先</h4>
-<%= f.radio_button :address_select, :myaddress %>
-<%= f.label :address_select, "ご自身の住所", {value: :myaddress} %>
-〒<%= @customer.postal_code %>
-<%= @customer.address %><br>
-<%= @customer.last_name %>
-<%= @customer.first_name %>
-
-<%= f.radio_button :address_select, :used_address %>
-<%= f.label :address_select, "登録済み住所から選択", {value: :used_address} %>
-<%= f.collection_select :address_id, current_customer.addresses, :id, :address_display %>
-
-<%= f.radio_button :address_select, :new_address %>
-<%= f.label :address_select, "新しいお届け先", {value: :new_address} %>
-<%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-<%= f.text_field :postal_code, :placeholder => "0000000" %>
-<%= f.label :address, '住所' %>
-<%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0" %>
-<%= f.label :name, '宛名' %>
-<%= f.text_field :name, :placeholder => "令和道子" %>
-
-<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
-<% end %>

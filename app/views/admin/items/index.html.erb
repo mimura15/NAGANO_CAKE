@@ -1,41 +1,58 @@
-<h1>商品一覧</h1>
-<%= link_to new_admin_item_path do %>
-	<i class="fas fa-plus-circle"></i>
-<% end %>
-
-<table class="table table-borderless">
-	<thead class="thead-light">
-		<tr>
-			<th scope="col1">商品ID</th>
-			<th scope="col1">商品名</th>
-			<th scope="col1">税抜価格</th>
-			<th scope="col1">ジャンル</th>
-			<th scope="col1">ステータス</th>
-		</tr>
-	</thead>
-	
-	<tbody>
-		<% @items.each do |item| %>
-		<tr>
-			<td><%= item.id %></td>
-			<td>
-				<%= link_to admin_item_path(item.id) do %>
-					<%= item.name %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h1>
+				商品一覧
+				<%= link_to new_admin_item_path do %>
+					<i class="fas fa-plus-circle"></i>
 				<% end %>
-			</td>
-			<td><%= item.price.to_s(:delimited) %></td>
-			<td><%= item.genre.name %></td>
-			<td>
-				<% if item.is_active %>
-					<p class="text-success">販売中</p>
-				<% else %>
-					<p class="text-secondary">販売停止中</p>
-				<% end %>
-			</td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+			</h1>
+		</div>
+	</div>
+</div>
 
-<%= paginate @items %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-borderless">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col1">商品ID</th>
+						<th scope="col1">商品名</th>
+						<th scope="col1">税抜価格</th>
+						<th scope="col1">ジャンル</th>
+						<th scope="col1">ステータス</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<% @items.each do |item| %>
+					<tr>
+						<td><%= item.id %></td>
+						<td>
+							<%= link_to admin_item_path(item.id) do %>
+								<%= item.name %>
+							<% end %>
+						</td>
+						<td><%= item.price.to_s(:delimited) %></td>
+						<td><%= item.genre.name %></td>
+						<td>
+							<% if item.is_active %>
+								<p class="text-success">販売中</p>
+							<% else %>
+								<p class="text-secondary">販売停止中</p>
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			
+			<%= paginate @items %>
+		</div>
+	</div>
+</div>
+
+
+
 	
